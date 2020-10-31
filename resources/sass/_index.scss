@@ -1,0 +1,64 @@
+$primaryColor: #3498db;
+$subColor: #0a1734;
+$myGreen: #349856;
+
+.intro {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    font: 400 1em/1.5 "Neuton";
+    text-align: center;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    transition: opacity 0.8s ease;
+    background-color: $subColor;
+
+    p {
+        text-transform: uppercase;
+        letter-spacing: 0.5em;
+        display: inline-block;
+        border: 4px double rgba(255, 255, 255, 1);
+        border-width: 7px 0;
+        padding: 1.5em 0em;
+        position: absolute;
+        color: $myGreen;
+        top: 50%;
+        left: 50%;
+        width: 50em;
+        transform: translate(-50%, -50%);
+
+        span {
+            font: 700 5em/1 "Oswald", sans-serif;
+            letter-spacing: 0;
+            padding: 0.25em 0 0.325em;
+            display: block;
+            margin: 0 auto;
+            text-shadow: 0 0 80px rgba(255, 255, 255, 0.7);
+            /* Clip Background Image */
+            background: url("/img/blue-fill.png") repeat-y;
+            -webkit-background-clip: text;
+            background-clip: text;
+            /* Animate Background Image */
+            color: transparent;
+            animation: fill-animation 80s linear infinite;
+            /* Activate hardware acceleration for smoother animations */
+            transform: translate3d(0, 0, 0);
+            backface-visibility: hidden;
+        }
+    }
+}
+
+button {
+    outline: none;
+}
+
+/* Animate Background Image */
+@keyframes fill-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}

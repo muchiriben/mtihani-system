@@ -1,0 +1,36 @@
+$primaryColor: #3498db;
+$subColor: #0a1734;
+$myGreen: #349856;
+
+#loginNav {
+    background-color: $subColor;
+}
+
+#page_title {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+
+#backBtn {
+    width: 100px;
+    outline: none;
+}
+
+.card {
+    border: 2px solid $subColor;
+    margin-top: 40px;
+}
+.card-header {
+    background-color: $subColor;
+    color: #ffffff;
+    font-size: 1.8rem;
+}
+
+.nav-item {
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    .nav-link {
+        color: #ffffff !important;
+    }
+}

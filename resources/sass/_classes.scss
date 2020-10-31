@@ -1,0 +1,214 @@
+$primaryColor: #3498db;
+$subColor: #0a1734;
+$myGreen: #349856;
+
+.new-class {
+    // border: 2px solid #3498db;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    width: 100%;
+
+    details {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+        height: auto;
+        margin-bottom: 10px;
+        //border: 2px solid #349856;
+
+        summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 0.3rem;
+            padding-right: 0.3rem;
+            background: #ff8a0e;
+            color: #ffffff;
+            text-transform: uppercase;
+            cursor: pointer;
+            outline: none;
+            border-radius: 0.3rem;
+            box-shadow: 0 2px 5px;
+
+            &:hover {
+                background: #ff9e35;
+            }
+
+            /* Adds an icon when the <details> is closed... */
+            &:after {
+                content: "+";
+                font-size: 2rem;
+            }
+        }
+
+        .cl-form {
+            //border: 2px solid #349856;
+            box-shadow: 0 2px 5px;
+            padding: 1rem;
+            margin: 0.5rem;
+            border-bottom: 4px solid #349856;
+
+            form {
+                display: grid;
+
+                input {
+                    outline: none;
+                    padding: 0.3rem;
+                }
+                select {
+                    outline: none;
+                    padding: 0.3rem;
+                }
+                input[type="submit"] {
+                    width: 50%;
+                    color: #ffffff;
+                    background-color: #ff8a0e;
+                    border: none;
+
+                    &:hover {
+                        background-color: #ff9e35;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* ...and switches it when <details> is open */
+details[open] > summary::after {
+    content: "-";
+    font-size: 2rem;
+}
+
+/* Removes the ugly default arrow on Chrome */
+details > summary::-webkit-details-marker {
+    display: none;
+}
+
+.cont {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    width: auto;
+    height: auto;
+    padding: 0 10px;
+
+    .cl-cards {
+        display: flex;
+        flex-direction: column;
+        //justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        height: 16rem;
+        width: 100%;
+        border-radius: 4px;
+        transition: all 500ms;
+        overflow: hidden;
+        text-decoration: none;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        box-shadow: 1px 2px 6px black;
+        cursor: pointer;
+
+        .c-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50%;
+            // height: 1rem;
+            //margin-bottom: 10px;
+            background-color: $primaryColor;
+            color: white;
+            // border: 2px solid $myGreen;
+            border-bottom-left-radius: 50%;
+            border-bottom-right-radius: 50%;
+        }
+        .c-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            flex: 1;
+            color: #000000;
+            //margin-top: 10px;
+            // border: 2px solid #349856;
+
+            h5 {
+                margin-bottom: 0.6rem;
+            }
+            .cl-button {
+                text-align: center;
+                background-color: $subColor;
+                color: white;
+                font-size: 1.8rem;
+                width: 50%;
+                border: $myGreen;
+                border-radius: 5px;
+                outline: none;
+                transition: all 300ms ease;
+                box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.75);
+            }
+
+            .cl-button:hover {
+                color: #3498db;
+                outline: none;
+                text-decoration: none;
+            }
+
+            .cl-button:active {
+                transform: translate(1px, 2px);
+            }
+        }
+    }
+}
+
+.open-form {
+    //border: 2px solid $primaryColor;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    h2 {
+        border-bottom: 4px solid $myGreen;
+    }
+
+    .cl-form {
+        //border: 2px solid #349856;
+        box-shadow: 0 2px 5px;
+        padding: 1rem;
+        margin: 0.5rem;
+        border-bottom: 4px solid #349856;
+        width: 50%;
+
+        form {
+            display: grid;
+
+            input {
+                outline: none;
+                padding: 0.3rem;
+            }
+            select {
+                outline: none;
+                padding: 0.3rem;
+            }
+            input[type="submit"] {
+                width: 50%;
+                color: #ffffff;
+                background-color: #ff8a0e;
+                border: none;
+
+                &:hover {
+                    background-color: #ff9e35;
+                }
+            }
+        }
+    }
+}

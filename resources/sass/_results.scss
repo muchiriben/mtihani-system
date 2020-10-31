@@ -1,0 +1,45 @@
+.stream-selector {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+
+    button {
+        margin-right: 20px;
+        width: 120px;
+        outline: none;
+        color: #ffffff;
+        font-size: 1rem;
+        background-color: #0a1734;
+        padding: 5px;
+        border: solid #0a1734;
+        border-radius: 5px;
+        box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.75);
+        &:active {
+            transform: translate(1px, 1px);
+        }
+    }
+}
+.stream {
+    // border: 2px solid #3498db;
+    height: auto;
+
+    .stream-title {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.east {
+    display: block;
+}
+.west {
+    display: none;
+}
+
+.title {
+    border-bottom: 2px soild #349856;
+}

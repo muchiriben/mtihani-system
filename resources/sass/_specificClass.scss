@@ -1,0 +1,60 @@
+$primaryColor: #3498db;
+$subColor: #0a1734;
+$myGreen: #349856;
+
+.view-students {
+    //border: 2px solid #349856;
+    padding: 20px;
+
+    .top-section {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 5px;
+        //border: 2px solid #3498db;
+
+        form {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            //justify-content: center;
+            //border: 2px solid #349878;
+
+            input[type="search"] {
+                border: 1.5px solid #349856;
+                border-radius: 5px;
+                width: 300px;
+                padding: 5px;
+                margin-right: 5px;
+                outline: none;
+            }
+            input[type="submit"] {
+                width: 100px;
+                padding: 5px;
+                color: #ffffff;
+                border-radius: 20px;
+                background-color: #ff8a0e;
+                border: 1px solid #ff8a0e;
+                outline: none;
+                box-shadow: 0px 2px 4px 1px rgba(148, 151, 156, 1);
+
+                &:active {
+                    transform: translate(1px, 1px);
+                }
+            }
+        }
+    }
+
+    table th {
+        border: 2px solid #349856;
+    }
+    table td {
+        border: 2px solid #349856;
+    }
+}
+
+.links {
+    margin: 20px;
+}
