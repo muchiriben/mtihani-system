@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Results extends Model
 {
@@ -17,4 +18,10 @@ class Results extends Model
           //student has a class
          return $this->belongsTo('App\Exam');
       }
+
+      public static function getResults($id)
+ {
+      $results = DB::table('Results')->select('upi','composition','grammar','english','insha','lugha','kiswahili','mathematics','science','social_studies','religious_education','ss_re')->where('exam_exam_id', $id)->orderBy('results_id','asc')->get()->toArray();
+      return $results;
+ }
 }

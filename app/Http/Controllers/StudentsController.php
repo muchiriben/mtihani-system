@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Student;
 use App\Classroom;
+use App\Exports\StudentsExport;
+use Excel;
 
 class StudentsController extends Controller
 {
@@ -122,5 +124,11 @@ class StudentsController extends Controller
         $student = Student::find($id);
         $student->delete();
         return redirect('/classes/'.$student->class_id)->with('success', 'Student Record Deleted');
+    }
+
+    public function exportIntoExcel(Request $request)
+    {
+        $class = Classroom::find($request->id);
+        return Excel::download(new StudentsExport($request->id), $class->class.' '.$class->stream.'.xlsx');
     }
 }

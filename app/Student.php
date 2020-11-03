@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Student extends Model
 {
@@ -19,17 +20,11 @@ class Student extends Model
     return $this->belongsTo('App\Classroom');
  }
 
- public function hasClass($class) {
-     if($this->class()->where('class', $class)) {
-          return true;
-      }
-      return false;
+ public static function getStudents($id)
+ {
+      $students = DB::table('students')->select('upi','fname','sname','parent_names','parent_contact')->where('classroom_class_id', $id)->orderBy('student_id','asc')->get()->toArray();
+      return $students;
  }
 
- public function hasStream($stream) {
-     if($this->class()->where('stream', $stream)) {
-          return true;
-      }
-      return false;
- }
+ 
 }

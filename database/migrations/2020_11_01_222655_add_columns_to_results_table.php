@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddForeignKeyToResultsTable extends Migration
+class AddColumnsToResultsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,9 @@ class AddForeignKeyToResultsTable extends Migration
     public function up()
     {
         Schema::table('results', function (Blueprint $table) {
-            $table->bigInteger('exam_id')->unsigned();
-            $table->foreign('exam_id')->references('exam_id')->on('exams');
+            $table->integer('english')->after('grammar');
+            $table->integer('kiswahili')->after('lugha');
+            $table->integer('ss_re')->after('religious_education');
         });
     }
 

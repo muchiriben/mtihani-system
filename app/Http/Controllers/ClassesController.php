@@ -64,7 +64,7 @@ class ClassesController extends Controller
     public function show($id)
     {
         $class = Classroom::find($id);
-        $students = Student::where('classroom_class_id', $id)->paginate(2);
+        $students = Student::where('classroom_class_id', $id)->paginate(15);
 
         return view('classes.specificClass')->with('class', $class)->with('students', $students);
     }

@@ -212,3 +212,19 @@ details > summary::-webkit-details-marker {
         }
     }
 }
+
+.links {
+    //border: 1px solid $primaryColor;
+    display: flex;
+    //align-items: center;
+    justify-content: space-between;
+
+    .downloadBtn {
+        border: 1px solid #3498db;
+        background-color: #3498db;
+        padding: 10px;
+        color: #ffffff;
+        font-size: 1.2rem;
+        border-radius: 5px;
+    }
+}

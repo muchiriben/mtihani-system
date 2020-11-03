@@ -50,7 +50,7 @@
 
          </select>
          <label for="grammah">Grammah:</label>
-         <input type="number" placeholder="Grammah" name="grammah" required>
+         <input type="number" placeholder="Grammar" name="grammar" required>
          <label for="composition">Composition:</label>
          <input type="number" placeholder="Composition" name="composition" required>
          <label for="lugha">Lugha:</label>
@@ -71,37 +71,45 @@
       </details>
 
       <div class="results">
+        <h4>Showing {{ $results->firstItem() }} - {{ $results->lastItem() }}</h4>
         <table class="table table-bordered">
           <thead>
             <tr>
               <th scope="col">#</th>
               <th scope="col">UPI</th>
               <th scope="col">Composition</th>
-              <th scope="col">Grammah</th>
+              <th scope="col">Grammar</th>
+              <th scope="col">English</th>
               <th scope="col">Insha</th>
               <th scope="col">Lugha</th>
+              <th scope="col">Kiswahili</th>
               <th scope="col">Mathematics</th>
               <th scope="col">Science</th>
               <th scope="col">Social Studies</th>
-              <th scope="col">Religious Education</th>
+              <th scope="col">Religious Ed.</th>
+              <th scope="col">SS & Re</th>
+              <th scope="col">Total</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
-              @if (count($results) > 0)
-              @foreach ($results as $result)
-              @if ($result->stream == "East")
+              @if (count($results_east) > 0)
+              @foreach ($results_east as $result)
               <tr>
-              <th scope="row">{{$loop->index + 1}}</th>
+              <th scope="row">{{$loop->index + $results->firstItem()}}</th>
                   <td>{{$result->upi}}</td>
                   <td>{{$result->composition}}</td>
-                  <td>{{$result->grammah}}</td>
+                  <td>{{$result->grammar}}</td>
+                  <td>{{$result->english}}</td>
                   <td>{{$result->insha}}</td>
                   <td>{{$result->lugha}}</td>
+                  <td>{{$result->kiswahili}}</td>
                   <td>{{$result->mathematics}}</td>
                   <td>{{$result->science}}</td>
                   <td>{{$result->social_studies}}</td>
                   <td>{{$result->religious_education}}</td>
+                  <td>{{$result->ss_re}}</td>
+                  <td>{{$result->total}}</td>
                   <td>
                     
                     <a href="{{ route('results.edit', ['id' => $result->results_id]) }}">EDIT</a><br>
@@ -112,13 +120,54 @@
                     </form>
       
                 </td>
-      
+                
                 </tr>
-              @endif  
+              
+              @if ($results_east->lastPage() == $results->currentPage())
+              <tr>
+                <th>Total</th>
+                <th> --- </th>
+                <th> {{$totals['comp']}} </th>
+                <th> {{$totals['grammar']}} </th>
+                <th> {{$totals['english']}}</th>
+                <th> {{$totals['insha']}} </th>
+                <th> {{$totals['lugha']}} </th>
+                <th> {{$totals['kiswahili']}} </th>
+                <th> {{$totals['mathematics']}} </th>
+                <th> {{$totals['science']}} </th>
+                <th> {{$totals['ss']}} </th>
+                <th> {{$totals['re']}} </th>
+                <th> {{$totals['ssre']}} </th>
+                <th> {{$totals['total']}} </th>
+                <th> --- </th>
+              </tr>
+              <tr>
+                <th>Mean</th>
+                <th> --- </th>
+                <th> {{$means['comp']}} </th>
+                <th> {{$means['grammar']}} </th>
+                <th> {{$means['english']}}</th>
+                <th> {{$means['insha']}} </th>
+                <th> {{$means['lugha']}} </th>
+                <th> {{$means['kiswahili']}} </th>
+                <th> {{$means['mathematics']}} </th>
+                <th> {{$means['science']}} </th>
+                <th> {{$means['ss']}} </th>
+                <th> {{$means['re']}} </th>
+                <th> {{$means['ssre']}} </th>
+                <th> {{$means['total']}} </th>
+                <th> --- </th>
+              </tr>
+              @endif 
               @endforeach
+              
             @endif  
           </tbody>
         </table>
+        <div class="links">
+          {{$results_east->links()}}
+          <a class="downloadBtn" href="{{ route('results.export', ['id' => $exam->exam_id]) }}"><i class="fa fa-download fa-lg" style="color: #ffffff; margin-right:5px"></i>Download</a>
+        </div>
       </div>
 </section>
 
@@ -163,8 +212,8 @@
           @endforeach
 
        </select>
-           <label for="grammah">Grammah:</label>
-           <input type="number" placeholder="Grammah" name="grammah" required>
+           <label for="grammar">Grammar:</label>
+           <input type="number" placeholder="Grammar" name="grammar" required>
            <label for="composition">Composition:</label>
            <input type="number" placeholder="Composition" name="composition" required>
            <label for="lugha">Lugha:</label>
@@ -185,56 +234,103 @@
         </details>
   
         <div class="results">
+          <h4>Showing {{ $results_west->firstItem() }} - {{ $results_west->lastItem() }}</h4>
           <table class="table table-bordered">
             <thead>
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">UPI</th>
                 <th scope="col">Composition</th>
-                <th scope="col">Grammah</th>
+                <th scope="col">Grammar</th>
+                <th scope="col">English</th>
                 <th scope="col">Insha</th>
                 <th scope="col">Lugha</th>
+                <th scope="col">Kiswahili</th>
                 <th scope="col">Mathematics</th>
                 <th scope="col">Science</th>
                 <th scope="col">Social Studies</th>
-                <th scope="col">Religious Education</th>
+                <th scope="col">Religious Ed.</th>
+                <th scope="col">SS & Re</th>
+                <th scope="col">Total</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
-                @if (count($results) > 0)
-                @foreach ($results as $result)
-                @if ($result->stream == "West")
-
+                @if (count($results_west) > 0)
+                @foreach ($results_west as $result)
                 <tr>
-                  <th scope="row">{{$loop->index + 1}}</th>
-                      <td>{{$result->upi}}</td>
-                      <td>{{$result->composition}}</td>
-                      <td>{{$result->grammah}}</td>
-                      <td>{{$result->insha}}</td>
-                      <td>{{$result->lugha}}</td>
-                      <td>{{$result->mathematics}}</td>
-                      <td>{{$result->science}}</td>
-                      <td>{{$result->social_studies}}</td>
-                      <td>{{$result->religious_education}}</td>
-                      <td>
-                        
-                    <a href="{{ route('results.edit', ['id' => $result->results_id]) }}">EDIT</a><br>
-                    <form action="{{ route('results.destroy', ['id' => $result->results_id]) }}" method="POST">
-                      @csrf
-                      {{method_field('DELETE')}}
-                      <input type="submit" name="delete" value="DELETE">
-                    </form>
-          
-                    </td>
-          
-                    </tr>
-                    
-                @endif   
+                <th scope="row">{{$loop->index + $results_west->firstItem()}}</th>
+                    <td>{{$result->upi}}</td>
+                    <td>{{$result->composition}}</td>
+                    <td>{{$result->grammar}}</td>
+                    <td>{{$result->english}}</td>
+                    <td>{{$result->insha}}</td>
+                    <td>{{$result->lugha}}</td>
+                    <td>{{$result->kiswahili}}</td>
+                    <td>{{$result->mathematics}}</td>
+                    <td>{{$result->science}}</td>
+                    <td>{{$result->social_studies}}</td>
+                    <td>{{$result->religious_education}}</td>
+                    <td>{{$result->ss_re}}</td>
+                    <td>{{$result->total}}</td>
+                    <td>
+                      
+                      <a href="{{ route('results.edit', ['id' => $result->results_id]) }}">EDIT</a><br>
+                      <form action="{{ route('results.destroy', ['id' => $result->results_id]) }}" method="POST">
+                        @csrf
+                        {{method_field('DELETE')}}
+                        <input type="submit" name="delete" value="DELETE">
+                      </form>
+        
+                  </td>
+                  
+                  </tr>
+              
+                @if ($results_west->lastPage() == $results_west->currentPage())
+                <tr>
+                  <th>Total</th>
+                  <th> --- </th>
+                  <th> {{$totals['comp']}} </th>
+                  <th> {{$totals['grammar']}} </th>
+                  <th> {{$totals['english']}}</th>
+                  <th> {{$totals['insha']}} </th>
+                  <th> {{$totals['lugha']}} </th>
+                  <th> {{$totals['kiswahili']}} </th>
+                  <th> {{$totals['mathematics']}} </th>
+                  <th> {{$totals['science']}} </th>
+                  <th> {{$totals['ss']}} </th>
+                  <th> {{$totals['re']}} </th>
+                  <th> {{$totals['ssre']}} </th>
+                  <th> {{$totals['total']}} </th>
+                  <th> --- </th>
+                </tr>
+                <tr>
+                  <th>Mean</th>
+                  <th> --- </th>
+                  <th> {{$means['comp']}} </th>
+                  <th> {{$means['grammar']}} </th>
+                  <th> {{$means['english']}}</th>
+                  <th> {{$means['insha']}} </th>
+                  <th> {{$means['lugha']}} </th>
+                  <th> {{$means['kiswahili']}} </th>
+                  <th> {{$means['mathematics']}} </th>
+                  <th> {{$means['science']}} </th>
+                  <th> {{$means['ss']}} </th>
+                  <th> {{$means['re']}} </th>
+                  <th> {{$means['ssre']}} </th>
+                  <th> {{$means['total']}} </th>
+                  <th> --- </th>
+                </tr>
+                @endif
                 @endforeach
+                
               @endif  
             </tbody>
           </table>
+          <div class="links">
+            {{$results_west->links()}}
+            <a class="downloadBtn" href="{{ route('results.export', ['id' => $exam->exam_id]) }}"><i class="fa fa-download fa-lg" style="color: #ffffff; margin-right:5px"></i>Download</a>
+          </div>
         </div>
   </section>
   

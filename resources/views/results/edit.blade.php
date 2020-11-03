@@ -11,8 +11,8 @@
     <div class="cl-form">
         <form action="{{ route('results.update', ['id' => $result->results_id]) }}" method="POST">
             @csrf
-            <label for="grammah">Grammah:</label>
-            <input type="number" value="{{$result->grammah}}" name="grammah" required>
+            <label for="grammar">Grammar:</label>
+            <input type="number" value="{{$result->grammar}}" name="grammar" required>
             <label for="composition">Composition:</label>
             <input type="number" value="{{$result->composition}}" name="composition" required>
             <label for="lugha">Lugha:</label>

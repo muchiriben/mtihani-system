@@ -104,7 +104,10 @@
       @endif  
     </tbody>
   </table>
-  {{$students->links()}}
+  <div class="links">
+    {{$students->links()}}
+    <a class="downloadBtn" href="{{ route('students.export', ['id' => $class->class_id]) }}"><i class="fa fa-download fa-lg" style="color: #ffffff; margin-right:5px"></i>Download</a>
+  </div>
 </section>
     
 @endsection

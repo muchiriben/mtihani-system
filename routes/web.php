@@ -28,6 +28,8 @@ Route::group(['middleware' => 'auth'], function()
 Route::get('/dashboard', 'DashboardController@index');
 Route::resource('/classes', 'ClassesController');
 Route::resource('/students', 'StudentsController');
+//export students table
+Route::get('students/export/{id}', 'StudentsController@exportIntoExcel')->name('students.export');
 
 //exams routes
 //Route::resource('exams', 'ExamsController');
@@ -44,5 +46,7 @@ Route::post('/results/store', 'ResultsController@store')->name('results.store');
 Route::get('/results/edit/{id}', 'ResultsController@edit')->name('results.edit');
 Route::post('/results/update/{id}', 'ResultsController@update')->name('results.update');
 Route::delete('/results/destroy/{id}', 'ResultsController@destroy')->name('results.destroy');
+//export table
+Route::get('results/export/{id}', 'ResultsController@exportIntoExcel')->name('results.export');
     
 });

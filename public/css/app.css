@@ -14370,6 +14370,20 @@ details > summary::-webkit-details-marker {
   background-color: #ff9e35;
 }
 
+.links {
+  display: flex;
+  justify-content: space-between;
+}
+
+.links .downloadBtn {
+  border: 1px solid #3498db;
+  background-color: #3498db;
+  padding: 10px;
+  color: #ffffff;
+  font-size: 1.2rem;
+  border-radius: 5px;
+}
+
 #loginNav {
   background-color: #0a1734;
 }
@@ -14735,7 +14749,7 @@ button {
 }
 
 .east {
-  display: block;
+  display: none;
 }
 
 .west {
