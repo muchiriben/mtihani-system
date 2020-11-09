@@ -14514,9 +14514,10 @@ details > summary::-webkit-details-marker {
   background-color: #0a1734;
   border-radius: 10px;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
   width: 100%;
   height: 400px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .quick-info .quick-info-card .header {
@@ -14533,12 +14534,14 @@ details > summary::-webkit-details-marker {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  overflow-x: hidden;
-  overflow-y: auto;
+}
+
+.quick-info .quick-info-card .body:hover {
+  background-color: #172b57;
 }
 
 .quick-info .quick-info-card .body .stats {
-  margin: 0.2rem 0.5rem 0;
+  margin: 0.45rem 0.5rem 0;
   display: grid;
   grid-template-columns: 70px 1fr;
   align-items: center;
@@ -14580,6 +14583,26 @@ details > summary::-webkit-details-marker {
   box-sizing: border-box;
   color: #ffffff;
   font-size: 1.2rem;
+}
+
+.quick-info .quick-info-card a {
+  text-decoration: none;
+  color: white;
+}
+
+.quick-info .quick-info-card::-webkit-scrollbar {
+  width: 0.5rem;
+  padding: 0.5rem;
+}
+
+.quick-info .quick-info-card::-webkit-scrollbar-track {
+  background: #0a1734;
+  border-top-right-radius: 10px;
+}
+
+.quick-info .quick-info-card::-webkit-scrollbar-thumb {
+  background: #ff8a00;
+  border-radius: 5px;
 }
 
 .intro {
@@ -14677,7 +14700,7 @@ button {
 }
 
 .view-students .top-section form input[type=search] {
-  border: 1.5px solid #349856;
+  border: 1.5px solid #0a1734;
   border-radius: 5px;
   width: 300px;
   padding: 5px;
@@ -14701,11 +14724,11 @@ button {
 }
 
 .view-students table th {
-  border: 2px solid #349856;
+  border: 1.5px solid #0a1734;
 }
 
 .view-students table td {
-  border: 2px solid #349856;
+  border: 1.5px solid #0a1734;
 }
 
 .links {
@@ -14758,5 +14781,75 @@ button {
 
 .title {
   border-bottom: 2px soild #349856;
+}
+
+.results .top-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.results .top-section form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.results .top-section form input[type=search] {
+  border: 1.5px solid #0a1734;
+  border-radius: 5px;
+  width: 300px;
+  padding: 5px;
+  margin-right: 5px;
+  outline: none;
+}
+
+.results .top-section form input[type=submit] {
+  width: 100px;
+  padding: 5px;
+  color: #ffffff;
+  border-radius: 20px;
+  background-color: #ff8a0e;
+  border: 1px solid #ff8a0e;
+  outline: none;
+  box-shadow: 0px 2px 4px 1px #94979c;
+}
+
+.results .top-section form input[type=submit]:active {
+  transform: translate(1px, 1px);
+}
+
+.results table th {
+  border: 1.5px solid #0a1734;
+}
+
+.results table td {
+  border: 1.5px solid #0a1734;
+}
+
+.actions {
+  border: 1px solid #0a1734;
+  background-color: #0a1734;
+  padding: 3px;
+  border-radius: 5px;
+  margin-bottom: 3px;
+  color: #ffffff;
+  width: 70px;
+}
+
+.actions a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.actions:hover {
+  color: #3498db;
+}
+
+.actions:hover a {
+  color: #3498db;
 }
 

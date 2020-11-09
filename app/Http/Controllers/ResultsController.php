@@ -17,9 +17,9 @@ class ResultsController extends Controller
         $exam = Exam::find($id);
         $classes = Classroom::all();
         $students = Student::all();
-       //$results = Exam::find($id)->results;
-
-        $results = Results::where('exam_exam_id',$id)->paginate(1);
+      
+        //results code
+        //east results
         $results_east = Results::where([
                                        ['exam_exam_id',$id],
                                        ['stream','East']
@@ -31,68 +31,131 @@ class ResultsController extends Controller
                                        ['stream','West']
                                        ])->paginate(1);                               
         
+        $results_east_calc = Results::where([['exam_exam_id',$id],['stream','East']]);
+        $results_west_calc = Results::where([['exam_exam_id',$id],['stream','West']]);
 
         //totals
-        $comp_total = Results::where('exam_exam_id',$id)->sum('composition');
-        $grammar_total = Results::where('exam_exam_id',$id)->sum('grammar');       
-        $eng_total = Results::where('exam_exam_id',$id)->sum('english');
-        $insha_total = Results::where('exam_exam_id',$id)->sum('insha');
-        $lugha_total = Results::where('exam_exam_id',$id)->sum('lugha');
-        $kisw_total = Results::where('exam_exam_id',$id)->sum('kiswahili');
-        $math_total = Results::where('exam_exam_id',$id)->sum('mathematics');
-        $scs_total = Results::where('exam_exam_id',$id)->sum('science');
-        $ss_total = Results::where('exam_exam_id',$id)->sum('social_studies');
-        $re_total = Results::where('exam_exam_id',$id)->sum('religious_education');
-        $ssre_total = Results::where('exam_exam_id',$id)->sum('ss_re');
-        $total_total = Results::where('exam_exam_id',$id)->sum('total');
+        $comp_total_east = $results_east_calc->sum('composition');
+        $grammar_total_east = $results_east_calc->sum('grammar');       
+        $eng_total_east = $results_east_calc->sum('english');
+        $insha_total_east = $results_east_calc->sum('insha');
+        $lugha_total_east = $results_east_calc->sum('lugha');
+        $kisw_total_east = $results_east_calc->sum('kiswahili');
+        $math_total_east = $results_east_calc->sum('mathematics');
+        $scs_total_east = $results_east_calc->sum('science');
+        $ss_total_east = $results_east_calc->sum('social_studies');
+        $re_total_east = $results_east_calc->sum('religious_education');
+        $ssre_total_east = $results_east_calc->sum('ss_re');
+        $total_total_east = $results_east_calc->sum('total');
 
         //means
-        $comp_mean = round(Results::where('exam_exam_id',$id)->avg('composition'),2);
-        $grammar_mean = round(Results::where('exam_exam_id',$id)->avg('grammar'),2);       
-        $eng_mean = round(Results::where('exam_exam_id',$id)->avg('english'),2);
-        $insha_mean = round(Results::where('exam_exam_id',$id)->avg('insha'),2);
-        $lugha_mean = round(Results::where('exam_exam_id',$id)->avg('lugha'),2);
-        $kisw_mean = round(Results::where('exam_exam_id',$id)->avg('kiswahili'),2);
-        $math_mean = round(Results::where('exam_exam_id',$id)->avg('mathematics'),2);
-        $scs_mean = round(Results::where('exam_exam_id',$id)->avg('science'),2);
-        $ss_mean = round(Results::where('exam_exam_id',$id)->avg('social_studies'),2);
-        $re_mean = round(Results::where('exam_exam_id',$id)->avg('religious_education'),2);
-        $ssre_mean = round(Results::where('exam_exam_id',$id)->avg('ss_re'),2);
-        $total_mean = round(Results::where('exam_exam_id',$id)->avg('total'),2);
+        $comp_mean_east = round($results_east_calc->avg('composition'),2);
+        $grammar_mean_east = round($results_east_calc->avg('grammar'),2);       
+        $eng_mean_east = round($results_east_calc->avg('english'),2);
+        $insha_mean_east = round($results_east_calc->avg('insha'),2);
+        $lugha_mean_east = round($results_east_calc->avg('lugha'),2);
+        $kisw_mean_east = round($results_east_calc->avg('kiswahili'),2);
+        $math_mean_east = round($results_east_calc->avg('mathematics'),2);
+        $scs_mean_east = round($results_east_calc->avg('science'),2);
+        $ss_mean_east = round($results_east_calc->avg('social_studies'),2);
+        $re_mean_east = round($results_east_calc->avg('religious_education'),2);
+        $ssre_mean_east = round($results_east_calc->avg('ss_re'),2);
+        $total_mean_east = round($results_east_calc->avg('total'),2);
             
-            $totals = array(
-                'comp' => $comp_total,
-                'grammar' => $grammar_total,
-                'english' => $eng_total,
-                'insha' => $insha_total,
-                'lugha' => $lugha_total,
-                'kiswahili' => $kisw_total,
-                'mathematics' => $math_total,
-                'science' => $scs_total,
-                'ss' => $ss_total,
-                're' => $re_total,
-                'ssre' => $ssre_total,
-                'total' => $total_total
+            $totals_east = array(
+                'comp' => $comp_total_east,
+                'grammar' => $grammar_total_east,
+                'english' => $eng_total_east,
+                'insha' => $insha_total_east,
+                'lugha' => $lugha_total_east,
+                'kiswahili' => $kisw_total_east,
+                'mathematics' => $math_total_east,
+                'science' => $scs_total_east,
+                'ss' => $ss_total_east,
+                're' => $re_total_east,
+                'ssre' => $ssre_total_east,
+                'total' => $total_total_east
             );
             
-            $means = array(
-                'comp' => $comp_mean,
-                'grammar' => $grammar_mean,
-                'english' => $eng_mean,
-                'insha' => $insha_mean,
-                'lugha' => $lugha_mean,
-                'kiswahili' => $kisw_mean,
-                'mathematics' => $math_mean,
-                'science' => $scs_mean,
-                'ss' => $ss_mean,
-                're' => $re_mean,
-                'ssre' => $ssre_mean,
-                'total' => $total_mean
+            $means_east = array(
+                'comp' => $comp_mean_east,
+                'grammar' => $grammar_mean_east,
+                'english' => $eng_mean_east,
+                'insha' => $insha_mean_east,
+                'lugha' => $lugha_mean_east,
+                'kiswahili' => $kisw_mean_east,
+                'mathematics' => $math_mean_east,
+                'science' => $scs_mean_east,
+                'ss' => $ss_mean_east,
+                're' => $re_mean_east,
+                'ssre' => $ssre_mean_east,
+                'total' => $total_mean_east
+            );
+
+            //west 
+             //totals
+        $comp_total_west = $results_west_calc->sum('composition');
+        $grammar_total_west = $results_west_calc->sum('grammar');       
+        $eng_total_west = $results_west_calc->sum('english');
+        $insha_total_west = $results_west_calc->sum('insha');
+        $lugha_total_west = $results_west_calc->sum('lugha');
+        $kisw_total_west = $results_west_calc->sum('kiswahili');
+        $math_total_west = $results_west_calc->sum('mathematics');
+        $scs_total_west = $results_west_calc->sum('science');
+        $ss_total_west = $results_west_calc->sum('social_studies');
+        $re_total_west = $results_west_calc->sum('religious_education');
+        $ssre_total_west = $results_west_calc->sum('ss_re');
+        $total_total_west = $results_west_calc->sum('total');
+
+        //means
+        $comp_mean_west = round($results_west_calc->avg('composition'),2);
+        $grammar_mean_west = round($results_west_calc->avg('grammar'),2);       
+        $eng_mean_west = round($results_west_calc->avg('english'),2);
+        $insha_mean_west = round($results_west_calc->avg('insha'),2);
+        $lugha_mean_west = round($results_west_calc->avg('lugha'),2);
+        $kisw_mean_west = round($results_west_calc->avg('kiswahili'),2);
+        $math_mean_west = round($results_west_calc->avg('mathematics'),2);
+        $scs_mean_west = round($results_west_calc->avg('science'),2);
+        $ss_mean_west = round($results_west_calc->avg('social_studies'),2);
+        $re_mean_west = round($results_west_calc->avg('religious_education'),2);
+        $ssre_mean_west = round($results_west_calc->avg('ss_re'),2);
+        $total_mean_west = round($results_west_calc->avg('total'),2);
+            
+            $totals_west = array(
+                'comp' => $comp_total_west,
+                'grammar' => $grammar_total_west,
+                'english' => $eng_total_west,
+                'insha' => $insha_total_west,
+                'lugha' => $lugha_total_west,
+                'kiswahili' => $kisw_total_west,
+                'mathematics' => $math_total_west,
+                'science' => $scs_total_west,
+                'ss' => $ss_total_west,
+                're' => $re_total_west,
+                'ssre' => $ssre_total_west,
+                'total' => $total_total_west
+            );
+            
+            $means_west = array(
+                'comp' => $comp_mean_west,
+                'grammar' => $grammar_mean_west,
+                'english' => $eng_mean_west,
+                'insha' => $insha_mean_west,
+                'lugha' => $lugha_mean_west,
+                'kiswahili' => $kisw_mean_west,
+                'mathematics' => $math_mean_west,
+                'science' => $scs_mean_west,
+                'ss' => $ss_mean_west,
+                're' => $re_mean_west,
+                'ssre' => $ssre_mean_west,
+                'total' => $total_mean_west
             );
         
         
-        return view('results.index')->with('results', $results)->with('exam', $exam)->with('students', $students)->with('classes', $classes)
-                                    ->with('totals', $totals)->with('means', $means)->with('results_east',$results_east)->with('results_west',$results_west);
+        return view('results.index')->with('exam', $exam)->with('students', $students)->with('classes', $classes)
+                                    ->with('totals_east', $totals_east)->with('means_east', $means_east)
+                                    ->with('totals_west', $totals_west)->with('means_west', $means_west)
+                                    ->with('results_east',$results_east)->with('results_west',$results_west);
     }
 
     public function store(Request $request)
@@ -183,12 +246,24 @@ class ResultsController extends Controller
     {
         $result = Results::find($id);
         $result->delete();
-        return redirect('/results/' .$result->exam_id)->with('success', 'Record Deleted');
+        return redirect('/results/' .$result->exam_exam_id)->with('success', 'Record Deleted');
     }
 
     public function exportIntoExcel(Request $request)
     {
         $exam = Exam::find($request->id);
         return Excel::download(new ResultsExport($request->id), $exam->exam_name.' Class '.$exam->exam_class.'.xlsx');
+    }
+
+    public function search()
+    {
+        $search_upi = $_GET['search'];
+        $exam_id = $_GET['exam'];
+        $results = Results::where([
+            ['upi','LIKE', '%'.$search_upi.'%'],
+            ['exam_exam_id', $exam_id]
+            ])->get();
+
+        return  view('results.search', compact('results'));
     }
 }

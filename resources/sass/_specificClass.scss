@@ -23,7 +23,7 @@ $myGreen: #349856;
             //border: 2px solid #349878;
 
             input[type="search"] {
-                border: 1.5px solid #349856;
+                border: 1.5px solid $subColor;
                 border-radius: 5px;
                 width: 300px;
                 padding: 5px;
@@ -48,10 +48,10 @@ $myGreen: #349856;
     }
 
     table th {
-        border: 2px solid #349856;
+        border: 1.5px solid $subColor;
     }
     table td {
-        border: 2px solid #349856;
+        border: 1.5px solid $subColor;
     }
 }
 

@@ -71,7 +71,14 @@
       </details>
 
       <div class="results">
-        <h4>Showing {{ $results->firstItem() }} - {{ $results->lastItem() }}</h4>
+        <div class="top-section">
+          <h4>Showing {{ $results_east->firstItem() }} - {{ $results_east->lastItem() }}</h4>
+          <form action="{{ url('/search_results') }}" type="get">
+            <input type="search" name="search" placeholder="Search UPI e.g ABCDE">
+            <input type="hidden" name="exam" value="{{$exam->exam_id}}">
+            <input type="submit" value="Search">
+        </form>
+        </div>
         <table class="table table-bordered">
           <thead>
             <tr>
@@ -96,7 +103,7 @@
               @if (count($results_east) > 0)
               @foreach ($results_east as $result)
               <tr>
-              <th scope="row">{{$loop->index + $results->firstItem()}}</th>
+              <th scope="row">{{$loop->index + $results_east->firstItem()}}</th>
                   <td>{{$result->upi}}</td>
                   <td>{{$result->composition}}</td>
                   <td>{{$result->grammar}}</td>
@@ -112,50 +119,50 @@
                   <td>{{$result->total}}</td>
                   <td>
                     
-                    <a href="{{ route('results.edit', ['id' => $result->results_id]) }}">EDIT</a><br>
+                    <button class="actions"><a href="{{ route('results.edit', ['id' => $result->results_id]) }}">EDIT</a></button>
                     <form action="{{ route('results.destroy', ['id' => $result->results_id]) }}" method="POST">
                       @csrf
                       {{method_field('DELETE')}}
-                      <input type="submit" name="delete" value="DELETE">
+                      <input class="actions" type="submit" name="delete" value="DELETE">
                     </form>
       
                 </td>
                 
                 </tr>
               
-              @if ($results_east->lastPage() == $results->currentPage())
+              @if ($results_east->lastPage() == $results_east->currentPage())
               <tr>
                 <th>Total</th>
                 <th> --- </th>
-                <th> {{$totals['comp']}} </th>
-                <th> {{$totals['grammar']}} </th>
-                <th> {{$totals['english']}}</th>
-                <th> {{$totals['insha']}} </th>
-                <th> {{$totals['lugha']}} </th>
-                <th> {{$totals['kiswahili']}} </th>
-                <th> {{$totals['mathematics']}} </th>
-                <th> {{$totals['science']}} </th>
-                <th> {{$totals['ss']}} </th>
-                <th> {{$totals['re']}} </th>
-                <th> {{$totals['ssre']}} </th>
-                <th> {{$totals['total']}} </th>
+                <th> {{$totals_east['comp']}} </th>
+                <th> {{$totals_east['grammar']}} </th>
+                <th> {{$totals_east['english']}}</th>
+                <th> {{$totals_east['insha']}} </th>
+                <th> {{$totals_east['lugha']}} </th>
+                <th> {{$totals_east['kiswahili']}} </th>
+                <th> {{$totals_east['mathematics']}} </th>
+                <th> {{$totals_east['science']}} </th>
+                <th> {{$totals_east['ss']}} </th>
+                <th> {{$totals_east['re']}} </th>
+                <th> {{$totals_east['ssre']}} </th>
+                <th> {{$totals_east['total']}} </th>
                 <th> --- </th>
               </tr>
               <tr>
                 <th>Mean</th>
                 <th> --- </th>
-                <th> {{$means['comp']}} </th>
-                <th> {{$means['grammar']}} </th>
-                <th> {{$means['english']}}</th>
-                <th> {{$means['insha']}} </th>
-                <th> {{$means['lugha']}} </th>
-                <th> {{$means['kiswahili']}} </th>
-                <th> {{$means['mathematics']}} </th>
-                <th> {{$means['science']}} </th>
-                <th> {{$means['ss']}} </th>
-                <th> {{$means['re']}} </th>
-                <th> {{$means['ssre']}} </th>
-                <th> {{$means['total']}} </th>
+                <th> {{$means_east['comp']}} </th>
+                <th> {{$means_east['grammar']}} </th>
+                <th> {{$means_east['english']}}</th>
+                <th> {{$means_east['insha']}} </th>
+                <th> {{$means_east['lugha']}} </th>
+                <th> {{$means_east['kiswahili']}} </th>
+                <th> {{$means_east['mathematics']}} </th>
+                <th> {{$means_east['science']}} </th>
+                <th> {{$means_east['ss']}} </th>
+                <th> {{$means_east['re']}} </th>
+                <th> {{$means_east['ssre']}} </th>
+                <th> {{$means_east['total']}} </th>
                 <th> --- </th>
               </tr>
               @endif 
@@ -275,11 +282,11 @@
                     <td>{{$result->total}}</td>
                     <td>
                       
-                      <a href="{{ route('results.edit', ['id' => $result->results_id]) }}">EDIT</a><br>
+                      <button class="actions"><a href="{{ route('results.edit', ['id' => $result->results_id]) }}">EDIT</a></button>
                       <form action="{{ route('results.destroy', ['id' => $result->results_id]) }}" method="POST">
                         @csrf
                         {{method_field('DELETE')}}
-                        <input type="submit" name="delete" value="DELETE">
+                        <input class="actions" type="submit" name="delete" value="DELETE">
                       </form>
         
                   </td>
@@ -290,35 +297,35 @@
                 <tr>
                   <th>Total</th>
                   <th> --- </th>
-                  <th> {{$totals['comp']}} </th>
-                  <th> {{$totals['grammar']}} </th>
-                  <th> {{$totals['english']}}</th>
-                  <th> {{$totals['insha']}} </th>
-                  <th> {{$totals['lugha']}} </th>
-                  <th> {{$totals['kiswahili']}} </th>
-                  <th> {{$totals['mathematics']}} </th>
-                  <th> {{$totals['science']}} </th>
-                  <th> {{$totals['ss']}} </th>
-                  <th> {{$totals['re']}} </th>
-                  <th> {{$totals['ssre']}} </th>
-                  <th> {{$totals['total']}} </th>
+                  <th> {{$totals_west['comp']}} </th>
+                  <th> {{$totals_west['grammar']}} </th>
+                  <th> {{$totals_west['english']}}</th>
+                  <th> {{$totals_west['insha']}} </th>
+                  <th> {{$totals_west['lugha']}} </th>
+                  <th> {{$totals_west['kiswahili']}} </th>
+                  <th> {{$totals_west['mathematics']}} </th>
+                  <th> {{$totals_west['science']}} </th>
+                  <th> {{$totals_west['ss']}} </th>
+                  <th> {{$totals_west['re']}} </th>
+                  <th> {{$totals_west['ssre']}} </th>
+                  <th> {{$totals_west['total']}} </th>
                   <th> --- </th>
                 </tr>
                 <tr>
                   <th>Mean</th>
                   <th> --- </th>
-                  <th> {{$means['comp']}} </th>
-                  <th> {{$means['grammar']}} </th>
-                  <th> {{$means['english']}}</th>
-                  <th> {{$means['insha']}} </th>
-                  <th> {{$means['lugha']}} </th>
-                  <th> {{$means['kiswahili']}} </th>
-                  <th> {{$means['mathematics']}} </th>
-                  <th> {{$means['science']}} </th>
-                  <th> {{$means['ss']}} </th>
-                  <th> {{$means['re']}} </th>
-                  <th> {{$means['ssre']}} </th>
-                  <th> {{$means['total']}} </th>
+                  <th> {{$means_west['comp']}} </th>
+                  <th> {{$means_west['grammar']}} </th>
+                  <th> {{$means_west['english']}}</th>
+                  <th> {{$means_west['insha']}} </th>
+                  <th> {{$means_west['lugha']}} </th>
+                  <th> {{$means_west['kiswahili']}} </th>
+                  <th> {{$means_west['mathematics']}} </th>
+                  <th> {{$means_west['science']}} </th>
+                  <th> {{$means_west['ss']}} </th>
+                  <th> {{$means_west['re']}} </th>
+                  <th> {{$means_west['ssre']}} </th>
+                  <th> {{$means_west['total']}} </th>
                   <th> --- </th>
                 </tr>
                 @endif

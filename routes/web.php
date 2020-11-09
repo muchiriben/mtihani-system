@@ -30,6 +30,7 @@ Route::resource('/classes', 'ClassesController');
 Route::resource('/students', 'StudentsController');
 //export students table
 Route::get('students/export/{id}', 'StudentsController@exportIntoExcel')->name('students.export');
+Route::get('/search_students', 'StudentsController@search')->name('students.search');
 
 //exams routes
 //Route::resource('exams', 'ExamsController');
@@ -48,5 +49,6 @@ Route::post('/results/update/{id}', 'ResultsController@update')->name('results.u
 Route::delete('/results/destroy/{id}', 'ResultsController@destroy')->name('results.destroy');
 //export table
 Route::get('results/export/{id}', 'ResultsController@exportIntoExcel')->name('results.export');
+Route::get('/search_results', 'ResultsController@search')->name('results.search');
     
 });

@@ -60,9 +60,9 @@
 <section class="view-students">  
   <div class="top-section">
     <h4>STUDENTS</h4>
-    <form action="">
+  <form action="{{ url('/search_students') }}" type="get">
         <input type="search" name="search" placeholder="Search UPI e.g ABCDE">
-        <input type="submit" name="search" value="Search">
+        <input type="submit" value="Search">
     </form>
   </div>
   <table class="table table-bordered">
@@ -88,12 +88,12 @@
             <td>{{$student->parent_names}}</td>
             <td>{{$student->parent_contact}}</td>
             <td>
-              
-          <a href="{{ route('students.edit', ['student' => $student->student_id]) }}">EDIT</a><br>
+
+           <button class="actions"><a href="{{ route('students.edit', ['student' => $student->student_id]) }}">EDIT</a></button>   
           <form action="{{ route('students.destroy', ['student' => $student->student_id]) }}" method="POST">
             @csrf
             {{method_field('DELETE')}}
-            <input type="submit" name="delete" value="DELETE">
+            <input class="actions" type="submit" name="delete" value="DELETE">
           </form>
 
           </td>

@@ -110,7 +110,7 @@ class StudentsController extends Controller
         $student->parent_contact = $request->input('parent_contact');
         $student->save();
 
-        return redirect('/classes/'.$student->class_id)->with('success', 'Student Record Updated');
+        return redirect('/classes/'.$student->classroom_class_id)->with('success', 'Student Record Updated');
     }
 
     /**
@@ -123,12 +123,20 @@ class StudentsController extends Controller
     {
         $student = Student::find($id);
         $student->delete();
-        return redirect('/classes/'.$student->class_id)->with('success', 'Student Record Deleted');
+        return redirect('/classes/'.$student->classroom_class_id)->with('success', 'Student Record Deleted');
     }
 
     public function exportIntoExcel(Request $request)
     {
         $class = Classroom::find($request->id);
         return Excel::download(new StudentsExport($request->id), $class->class.' '.$class->stream.'.xlsx');
+    }
+
+    public function search()
+    {
+        $search_upi = $_GET['search'];
+        $students = Student::where('upi','LIKE', '%'.$search_upi.'%')->get();
+
+        return  view('students.search', compact('students'));
     }
 }
