@@ -48,7 +48,19 @@ Route::get('/results/edit/{id}', 'ResultsController@edit')->name('results.edit')
 Route::post('/results/update/{id}', 'ResultsController@update')->name('results.update');
 Route::delete('/results/destroy/{id}', 'ResultsController@destroy')->name('results.destroy');
 //export table
-Route::get('results/export/{id}', 'ResultsController@exportIntoExcel')->name('results.export');
+Route::get('results/export/{id}/{stream}', 'ResultsController@exportIntoExcel')->name('results.export');
 Route::get('/search_results', 'ResultsController@search')->name('results.search');
-    
+
+//admin users
+Route::resource('/users','UsersController');
+
+//sms
+Route::get('/sms', 'SmsController@index')->name('sms.index');
+Route::get('/message_all', 'SmsController@messageAll')->name('sms.message_all');
+Route::get('/message_specific', 'SmsController@messageSpecific')->name('sms.message_specific');
+Route::get('/message_bom', 'SmsController@messageBom')->name('sms.message_bom');
+Route::get('/message_teachers', 'SmsController@messageTeachers')->name('sms.message_techers');
+
+Route::post('/send_sms', 'SmsController@send_sms')->name('sms.send'); 
+Route::post('/send_specific', 'SmsController@send_specific')->name('sms.send_specific');   
 });

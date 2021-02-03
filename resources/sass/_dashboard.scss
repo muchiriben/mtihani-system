@@ -93,38 +93,44 @@ $myGreen: #349856;
         border-radius: 10px;
         box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
         width: 100%;
-        height: 400px;
-        overflow-x: hidden;
-        overflow-y: auto;
+        height: auto;
 
         .header {
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-direction: column;
             color: #ffffff;
             padding-top: 10px;
             border-bottom: 2px solid #349856;
+
+            small {
+                font-size: 0.8rem;
+                margin: 0;
+            }
         }
 
         .body {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            justify-content: center;
-
-            &:hover {
-                background-color: #172b57;
-            }
+            height: 355px;
+            overflow-x: hidden;
+            overflow-y: auto;
 
             .stats {
-                margin: 0.45rem 0.5rem 0;
+                margin: 0.45rem 0 0;
                 display: grid;
                 grid-template-columns: 70px 1fr;
                 align-items: center;
                 position: relative;
                 width: 100%;
                 height: auto;
-                //border: 2px solid #f99d0c;
+                border-radius: 5px;
+
+                &:hover {
+                    background-color: #172b57;
+                }
 
                 .number {
                     background-color: #ffffff;
@@ -136,7 +142,7 @@ $myGreen: #349856;
                     width: 40px;
                     height: 40px;
                     border-radius: 50%;
-                    margin: 18px 10px;
+                    margin: 18px 20px;
 
                     h2 {
                         color: #349856;
@@ -154,6 +160,7 @@ $myGreen: #349856;
                     stroke-width: 8;
                     stroke-linecap: round;
                     pointer-events: none;
+                    margin-left: 10px;
                 }
 
                 .num-content {
@@ -161,6 +168,7 @@ $myGreen: #349856;
                     box-sizing: border-box;
                     color: #ffffff;
                     font-size: 1.2rem;
+                    margin-left: 10px;
                 }
             }
         }
@@ -171,18 +179,22 @@ $myGreen: #349856;
         }
     }
 
-    .quick-info-card::-webkit-scrollbar {
+    .body::-webkit-scrollbar {
         width: 0.5rem;
         padding: 0.5rem;
     }
 
-    .quick-info-card::-webkit-scrollbar-track {
+    .body::-webkit-scrollbar-track {
         background: $subColor;
-        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
     }
 
-    .quick-info-card::-webkit-scrollbar-thumb {
+    .body::-webkit-scrollbar-thumb {
         background: #ff8a00;
         border-radius: 5px;
+    }
+
+    table {
+        width: 300px;
     }
 }

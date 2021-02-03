@@ -11,14 +11,14 @@
     <div class="cl-form">
         <form action="{{ route('results.update', ['id' => $result->results_id]) }}" method="POST">
             @csrf
-            <label for="grammar">Grammar:</label>
-            <input type="number" value="{{$result->grammar}}" name="grammar" required>
             <label for="composition">Composition:</label>
             <input type="number" value="{{$result->composition}}" name="composition" required>
-            <label for="lugha">Lugha:</label>
-            <input type="number" value="{{$result->lugha}}" name="lugha" required>
+            <label for="grammar">Grammar:</label>
+            <input type="number" value="{{$result->grammar}}" name="grammar" required>
             <label for="insha">Insha:</label>
             <input type="number" value="{{$result->insha}}" name="insha" required>
+            <label for="lugha">Lugha:</label>
+            <input type="number" value="{{$result->lugha}}" name="lugha" required>
             <label for="mathematics">Mathematics:</label>
             <input type="number" value="{{$result->mathematics}}" name="mathematics" required>
             <label for="science">Science:</label>

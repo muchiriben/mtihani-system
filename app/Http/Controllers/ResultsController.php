@@ -23,13 +23,13 @@ class ResultsController extends Controller
         $results_east = Results::where([
                                        ['exam_exam_id',$id],
                                        ['stream','East']
-                                       ])->paginate(1);
+                                       ])->orderBy('total','desc')->paginate(1);
 
         //west results                               
         $results_west = Results::where([
                                        ['exam_exam_id',$id],
                                        ['stream','West']
-                                       ])->paginate(1);                               
+                                       ])->orderBy('total','desc')->paginate(1);                               
         
         $results_east_calc = Results::where([['exam_exam_id',$id],['stream','East']]);
         $results_west_calc = Results::where([['exam_exam_id',$id],['stream','West']]);
@@ -252,7 +252,8 @@ class ResultsController extends Controller
     public function exportIntoExcel(Request $request)
     {
         $exam = Exam::find($request->id);
-        return Excel::download(new ResultsExport($request->id), $exam->exam_name.' Class '.$exam->exam_class.'.xlsx');
+        $stream = $request->stream;
+        return Excel::download(new ResultsExport($request->id,$stream), $exam->exam_name.' '.$exam->exam_class. ' ' .$stream.'.xlsx');
     }
 
     public function search()

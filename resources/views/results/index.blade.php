@@ -49,14 +49,14 @@
           @endforeach
 
          </select>
-         <label for="grammah">Grammah:</label>
-         <input type="number" placeholder="Grammar" name="grammar" required>
          <label for="composition">Composition:</label>
          <input type="number" placeholder="Composition" name="composition" required>
-         <label for="lugha">Lugha:</label>
-         <input type="number" placeholder="Lugha" name="lugha" required>
+         <label for="grammah">Grammah:</label>
+         <input type="number" placeholder="Grammar" name="grammar" required>
          <label for="insha">Insha:</label>
          <input type="number" placeholder="Insha" name="insha" required>
+         <label for="lugha">Lugha:</label>
+         <input type="number" placeholder="Lugha" name="lugha" required>
          <label for="mathematics">Mathematics:</label>
          <input type="number" placeholder="Mathematics" name="mathematics" required>
          <label for="science">Science:</label>
@@ -173,7 +173,7 @@
         </table>
         <div class="links">
           {{$results_east->links()}}
-          <a class="downloadBtn" href="{{ route('results.export', ['id' => $exam->exam_id]) }}"><i class="fa fa-download fa-lg" style="color: #ffffff; margin-right:5px"></i>Download</a>
+          <a class="downloadBtn" href="{{ route('results.export', ['id' => $exam->exam_id, 'stream' => 'East']) }}"><i class="fa fa-download fa-lg" style="color: #ffffff; margin-right:5px"></i>Download</a>
         </div>
       </div>
 </section>
@@ -219,14 +219,14 @@
           @endforeach
 
        </select>
-           <label for="grammar">Grammar:</label>
-           <input type="number" placeholder="Grammar" name="grammar" required>
            <label for="composition">Composition:</label>
            <input type="number" placeholder="Composition" name="composition" required>
-           <label for="lugha">Lugha:</label>
-           <input type="number" placeholder="Lugha" name="lugha" required>
+           <label for="grammar">Grammar:</label>
+           <input type="number" placeholder="Grammar" name="grammar" required>
            <label for="insha">Insha:</label>
            <input type="number" placeholder="Insha" name="insha" required>
+           <label for="lugha">Lugha:</label>
+           <input type="number" placeholder="Lugha" name="lugha" required>
            <label for="mathematics">Mathematics:</label>
            <input type="number" placeholder="Mathematics" name="mathematics" required>
            <label for="science">Science:</label>
@@ -241,7 +241,14 @@
         </details>
   
         <div class="results">
+          <div class="top-section">
           <h4>Showing {{ $results_west->firstItem() }} - {{ $results_west->lastItem() }}</h4>
+          <form action="{{ url('/search_results') }}" type="get">
+            <input type="search" name="search" placeholder="Search UPI e.g ABCDE">
+            <input type="hidden" name="exam" value="{{$exam->exam_id}}">
+            <input type="submit" value="Search">
+        </form>
+          </div>
           <table class="table table-bordered">
             <thead>
               <tr>
@@ -336,7 +343,7 @@
           </table>
           <div class="links">
             {{$results_west->links()}}
-            <a class="downloadBtn" href="{{ route('results.export', ['id' => $exam->exam_id]) }}"><i class="fa fa-download fa-lg" style="color: #ffffff; margin-right:5px"></i>Download</a>
+            <a class="downloadBtn" href="{{ route('results.export', ['id' => $exam->exam_id, 'stream' => 'West']) }}"><i class="fa fa-download fa-lg" style="color: #ffffff; margin-right:5px"></i>Download</a>
           </div>
         </div>
   </section>

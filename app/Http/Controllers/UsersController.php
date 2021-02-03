@@ -3,22 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Exam;
-use App\Classroom;
-use App\Results;
+use App\User;
 
-class ExamsController extends Controller
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        $class = $id;
-        $exams = Exam::where('exam_class', $id)->orderBy('created_at','desc')->paginate(12);
-        return view('exams.index')->with('exams', $exams)->with('class', $class);
+        //
     }
 
     /**
@@ -39,17 +35,7 @@ class ExamsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'exam_name' => 'required',
-            'exam_class' => 'required',
-        ]);
-
-        $exam = new Exam;
-        $exam->exam_name = $request->input('exam_name');
-        $exam->exam_class = $request->input('exam_class'); 
-        $exam->save();
-
-        return redirect('/exams/' .$exam->exam_class)->with('success', 'Exam Created Successfully');
+        //
     }
 
     /**
@@ -60,9 +46,7 @@ class ExamsController extends Controller
      */
     public function show($id)
     {
-        $exam = Exam::find($id);
-        $results = Results::where('exam_id', $id)->paginate(12);
-        return view('exams.specificExam')->with('results', $results)->with('exam', $exam);
+        //
     }
 
     /**
@@ -73,7 +57,8 @@ class ExamsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('users.edit')->with('user', $user);
     }
 
     /**
@@ -85,15 +70,12 @@ class ExamsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'exam_name' => 'required'
-        ]);
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->username = $request->username;
+        $user->save();
 
-        $exam = Exam::find($id);
-        $exam->exam_name = $request->input('exam_name');
-        $exam->save();
-
-        return redirect('/results/' .$exam->exam_id)->with('success', 'Exam Updated Successfully');
+        return redirect('/dashboard')->with('success', 'User Details Updated');
     }
 
     /**
@@ -104,6 +86,8 @@ class ExamsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect('/dashboard')->with('success', 'User Deleted Successfully');
     }
 }

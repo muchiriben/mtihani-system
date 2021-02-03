@@ -11,25 +11,28 @@ class ResultsExport implements FromCollection,WithHeadings,ShouldAutoSize
 {
     protected $id;
 
-    function __construct($id) {
+    function __construct($id, $stream) {
         $this->id = $id;
+        $this->stream = $stream;
     }
 
     public function headings():array
     {
         return [
-            "UPI NO.",
-            "Composition",
-            "Grammar",
-            "English",
+            "Fname",
+            "Sname",
+            "Comp",
+            "Grm",
+            "Eng",
             "Insha",
             "Lugha",
-            "Kiswahili",
-            "Mathematics",
-            "Science",
-            "Social Studies",
-            "Religious Education",
-            "SS/RE"
+            "Kisw",
+            "Math",
+            "Scs",
+            "SS",
+            "RE",
+            "SS/RE",
+            "Total"
         ];
     }
     /**
@@ -37,7 +40,6 @@ class ResultsExport implements FromCollection,WithHeadings,ShouldAutoSize
     */
     public function collection()
     {
-        return collect(Results::getResults($this->id));
-        //return AppResults::all();
+        return collect(Results::getResults($this->id, $this->stream));
     }
 }

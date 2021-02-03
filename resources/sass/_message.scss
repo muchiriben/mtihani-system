@@ -1,0 +1,19 @@
+.cl-form {
+    textarea {
+        padding: 5px;
+    }
+}
+
+.heading {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+    h1 {
+        font-size: 2rem;
+        padding: 5px;
+        border-bottom: 4px solid #ffa80e;
+    }
+}

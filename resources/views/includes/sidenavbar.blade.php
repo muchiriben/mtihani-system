@@ -14,7 +14,7 @@
 		</li>
         <li class="nav-item">
 		    <i class="fa fa-comments fa-lg" style="color: #3498db"></i>
-            <a href="/send-sms" class="nav-link">SMS</a>
+            <a href="/sms" class="nav-link">SMS</a>
         </li>
         <li class="nav-item">
 			<i class="fa fa-address-book fa-lg" style="color: #3498db"></i>

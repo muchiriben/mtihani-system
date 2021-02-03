@@ -14007,6 +14007,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .alertMessages .alert {
@@ -14515,39 +14516,46 @@ details > summary::-webkit-details-marker {
   border-radius: 10px;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
   width: 100%;
-  height: 400px;
-  overflow-x: hidden;
-  overflow-y: auto;
+  height: auto;
 }
 
 .quick-info .quick-info-card .header {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   color: #ffffff;
   padding-top: 10px;
   border-bottom: 2px solid #349856;
+}
+
+.quick-info .quick-info-card .header small {
+  font-size: 0.8rem;
+  margin: 0;
 }
 
 .quick-info .quick-info-card .body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
-}
-
-.quick-info .quick-info-card .body:hover {
-  background-color: #172b57;
+  height: 355px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .quick-info .quick-info-card .body .stats {
-  margin: 0.45rem 0.5rem 0;
+  margin: 0.45rem 0 0;
   display: grid;
   grid-template-columns: 70px 1fr;
   align-items: center;
   position: relative;
   width: 100%;
   height: auto;
+  border-radius: 5px;
+}
+
+.quick-info .quick-info-card .body .stats:hover {
+  background-color: #172b57;
 }
 
 .quick-info .quick-info-card .body .stats .number {
@@ -14558,7 +14566,7 @@ details > summary::-webkit-details-marker {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  margin: 18px 10px;
+  margin: 18px 20px;
 }
 
 .quick-info .quick-info-card .body .stats .number h2 {
@@ -14576,6 +14584,7 @@ details > summary::-webkit-details-marker {
   stroke-width: 8;
   stroke-linecap: round;
   pointer-events: none;
+  margin-left: 10px;
 }
 
 .quick-info .quick-info-card .body .stats .num-content {
@@ -14583,6 +14592,7 @@ details > summary::-webkit-details-marker {
   box-sizing: border-box;
   color: #ffffff;
   font-size: 1.2rem;
+  margin-left: 10px;
 }
 
 .quick-info .quick-info-card a {
@@ -14590,19 +14600,23 @@ details > summary::-webkit-details-marker {
   color: white;
 }
 
-.quick-info .quick-info-card::-webkit-scrollbar {
+.quick-info .body::-webkit-scrollbar {
   width: 0.5rem;
   padding: 0.5rem;
 }
 
-.quick-info .quick-info-card::-webkit-scrollbar-track {
+.quick-info .body::-webkit-scrollbar-track {
   background: #0a1734;
-  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
-.quick-info .quick-info-card::-webkit-scrollbar-thumb {
+.quick-info .body::-webkit-scrollbar-thumb {
   background: #ff8a00;
   border-radius: 5px;
+}
+
+.quick-info table {
+  width: 300px;
 }
 
 .intro {
@@ -14851,5 +14865,23 @@ button {
 
 .actions:hover a {
   color: #3498db;
+}
+
+.cl-form textarea {
+  padding: 5px;
+}
+
+.heading {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.heading h1 {
+  font-size: 2rem;
+  padding: 5px;
+  border-bottom: 4px solid #ffa80e;
 }
 
