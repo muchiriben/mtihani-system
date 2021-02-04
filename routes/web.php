@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('pages.index');
 });
 
+
 Auth::routes([
     'reset' => false
   ]);

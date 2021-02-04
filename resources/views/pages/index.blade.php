@@ -24,7 +24,7 @@
         <main id="main" class="py-4">
                 <div class="intro">
                     <p>Excellence is the key to success
-                    <span>Elimisha Exam System</span>
+                    <span>Mtihani Managment System</span>
                     <a href="/login" class="btn btn-success btn-lg">Login</a><br><br>
                   &mdash; Always number one &mdash;</p>
                 </div>

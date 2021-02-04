@@ -14643,7 +14643,7 @@ details > summary::-webkit-details-marker {
   color: #349856;
   top: 50%;
   left: 50%;
-  width: 50em;
+  width: 70em;
   transform: translate(-50%, -50%);
 }
 
