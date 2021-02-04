@@ -13,6 +13,8 @@
         @csrf
         <input type="text" name="title" placeholder="Title"><br>
         <textarea name="message" id="messsage" cols="30" rows="10" placeholder="Write message here..."></textarea><br>
+        <label for="add_number">For testing purposes register a new student with your number under Parent's Contact:</label>
+        <a href="/classes">Register Student</a><br>
         <input type="submit" value="Send Message">
     </form>    
     </div>
