@@ -25,7 +25,7 @@ class Results extends Model
                 ->join('students', 'results.upi', '=', 'students.upi')
                   ->select('students.fname','students.sname','composition','grammar','english','insha','lugha','kiswahili','mathematics','science','social_studies','religious_education','ss_re','total')
                  ->where([
-                      'exam_exam_id' => $id,
+                      'exam_id' => $id,
                       'stream' => $stream
                       ])
                  ->orderBy('total','desc')->get()->toArray();
