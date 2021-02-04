@@ -35,9 +35,11 @@ class DashboardController extends Controller
         $recent_exam = Exam::latest()->first();
         if($recent_exam){
             $top_perfomers = Exam::find($recent_exam->exam_id)->results->sortByDesc('total')->take(10);
+            return view('/dashboard')->with('students',$students)->with('admin_users', $admin_users)->with('exams',$exams)
+            ->with('top_perfomers',$top_perfomers)->with('classes', $classes);
+        } else {
+            return view('/dashboard')->with('students',$students)->with('admin_users', $admin_users)->with('exams',$exams);
         }
 
-        return view('/dashboard')->with('students',$students)->with('admin_users', $admin_users)->with('exams',$exams)
-                                 ->with('top_perfomers',$top_perfomers)->with('classes', $classes);
     }
 }
