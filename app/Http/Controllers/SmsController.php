@@ -46,7 +46,7 @@ class SmsController extends Controller
 
  // Set your app credentials
  $username   = "school-app";
- $apiKey     = "f3733bc49f4d0720c534e6885f7d2d502a89abc05dccc72ff73498e0836e1c5f";
+ $apiKey     = "myapikey";
  
  // Initialize the SDK
  $AT         = new AfricasTalking($username, $apiKey);
