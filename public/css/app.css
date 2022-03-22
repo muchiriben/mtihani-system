@@ -14048,6 +14048,7 @@ h2[id=page_title] {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -14057,6 +14058,7 @@ h2[id=page_title] {
 .sidenav .sidenav-nav .nav-item {
   border-bottom: 1px solid #349856;
   width: 100%;
+  margin: 10px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -14076,8 +14078,8 @@ h2[id=page_title] {
 }
 
 .sidenav .sidenav-nav .nav-item .nav-link:hover {
-  transition: 600ms ease;
-  font-size: 1.5rem;
+  transition: 300ms ease-in-out;
+  font-size: 1.4rem;
 }
 
 .sidenav::-webkit-scrollbar {

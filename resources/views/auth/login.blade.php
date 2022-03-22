@@ -12,8 +12,8 @@
 
                 <div class="card-body">
                 <div>
-                    Username: Admin
-                    Password: AdminLogin123
+                    Username: Admin <br>
+                    Password: AdminLogin123 <br>
                 </div>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf

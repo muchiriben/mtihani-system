@@ -20,10 +20,5 @@
 			<i class="fa fa-address-book fa-lg" style="color: #3498db"></i>
 		    <a href="{{ route('register') }}" class="nav-link">Register</a>
 		</li>
-		<li class="nav-item">
-			<i class="fa fa-book fa-lg" style="color: #3498db"></i>
-		    <a href="/analytics" class="nav-link">Analytics</a>
-		</li>
-			
 	</ul>
 </nav>
