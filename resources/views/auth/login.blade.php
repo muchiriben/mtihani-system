@@ -11,6 +11,10 @@
                 <div class="card-header text-center">MTIHANI MANAGEMENT SYSTEM</div>
 
                 <div class="card-body">
+                <div>
+                    Username: Admin
+                    Password: AdminLogin123
+                </div>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
